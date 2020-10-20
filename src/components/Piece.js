@@ -1,0 +1,28 @@
+import React from "react";
+import { useDrag, DragPreviewImage } from "react-dnd";
+
+function Piece({ piece: { type, color }, position }) {
+  const [{ isDragging }, drag, preview] = useDrag({
+    item: { type: "PIECE", id: `${position}_${type}_${color}` },
+    collect: (monitor) => {
+      return { isDragging: !!monitor.isDragging() };
+    },
+  });
+
+  const pieceImg = require(`../assets/${type}_${color}.png`);
+
+  return (
+    <>
+      <DragPreviewImage connect={preview} src={pieceImg} />
+      <div
+        className="piece-container"
+        ref={drag}
+        style={{ opacity: isDragging ? 0 : 1 }}
+      >
+        <img className="piece" src={pieceImg} alt={`${type}_${color}`} />
+      </div>
+    </>
+  );
+}
+
+export default Piece;
