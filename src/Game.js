@@ -60,6 +60,14 @@ const updateGame = (pendingPromotion) => {
 
   localStorage.setItem("savedGame", chess.fen());
 
+  document.addEventListener("keydown", (e) => {
+    let key = e.key;
+    if (key == "c" || key == "C") {
+      localStorage.removeItem("savedGame");
+      resetGame();
+    }
+  });
+
   gameSubject.next(newGame);
 };
 
