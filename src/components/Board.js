@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BoardSquare from "./BoardSquare";
 
-const Board = ({ board, turn, check }) => {
-  const [currBoard, setCurrBoard] = useState([]);
-  useEffect(() => {
-    setCurrBoard(turn === "w" ? board.flat() : board.flat().reverse());
-  }, [board, turn]);
-
+const Board = ({ board }) => {
   const getXYPosition = (i) => {
-    const x = turn === "w" ? i % 8 : Math.abs((i % 8) - 7);
-    const y =
-      turn === "w" ? Math.abs(Math.floor(i / 8) - 7) : Math.floor(i / 8);
+    const x = i % 8;
+    const y = Math.abs(Math.floor(i / 8) - 7);
     return { x, y };
   };
 
@@ -27,7 +21,7 @@ const Board = ({ board, turn, check }) => {
 
   return (
     <div className="board">
-      {currBoard.flat().map((piece, i) => (
+      {board.flat().map((piece, i) => (
         <div key={i} className="square">
           <BoardSquare
             piece={piece}

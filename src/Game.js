@@ -55,7 +55,6 @@ const updateGame = (pendingPromotion) => {
     board: chess.board(),
     pendingPromotion,
     isGameOver,
-    turn: chess.turn(),
     result: isGameOver ? getGameResult : null,
   };
 
