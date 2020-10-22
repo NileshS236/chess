@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="app">
+      <h1>Press R to reser the Board.</h1>
       {isGameOver && (
         <h2 className="vertical-text">
           GAME OVER

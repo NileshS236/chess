@@ -62,7 +62,7 @@ const updateGame = (pendingPromotion) => {
 
   document.addEventListener("keydown", (e) => {
     let key = e.key;
-    if (key === "c" || key === "C") {
+    if (key === "r" || key === "R") {
       localStorage.removeItem("savedGame");
       resetGame();
     }
