@@ -22,21 +22,25 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <h1>Press R to reset the Board.</h1>
-      {isGameOver && (
-        <h2 className="vertical-text">
-          GAME OVER
-          <button onClick={resetGame}>
-            <span className="vertical-text">NEW GAME</span>
-          </button>
-        </h2>
-      )}
-      <div className="board-container">
-        <Board board={board} turn={turn} />
+    <>
+      <div className="app">
+        <h1>Press R to reset the Board.</h1>
+        <div className="main">
+          {isGameOver && (
+            <h2 className="vertical-text">
+              GAME OVER
+              <button onClick={resetGame}>
+                <span className="vertical-text">NEW GAME</span>
+              </button>
+            </h2>
+          )}
+          <div className="board-container">
+            <Board board={board} turn={turn} />
+          </div>
+          {result && <p className="vertical-text">{result}</p>}
+        </div>
       </div>
-      {result && <p className="vertical-text">{result}</p>}
-    </div>
+    </>
   );
 }
 
